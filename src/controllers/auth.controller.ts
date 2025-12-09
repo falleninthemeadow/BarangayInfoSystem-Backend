@@ -4,6 +4,7 @@ import { AuthService } from "../services/auth.service";
 import type { LoginUser } from "../types/requests/Auth";
 import { jwtUtil } from "../utils/jwt";
 import { hashPassword, comparePassword } from "../utils/hash";
+import { logActivity } from "../utils/logger";
 
 const service = new AuthService();
 
@@ -37,6 +38,8 @@ export class AuthController {
             sameSite: "lax"
         });
 
+        await logActivity("User logged in", user.id);
+
         return res.status(200).json({
             message: "Successfully logged in",
             data: {
@@ -65,6 +68,8 @@ export class AuthController {
             secure: process.env.NODE_ENV === "production",
             sameSite: "lax"
         });
+
+        await logActivity("User logged out", req.user.id);
 
         return res.status(200).json({
             message: "Successfully logged out"
