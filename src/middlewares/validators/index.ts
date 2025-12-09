@@ -6,3 +6,5 @@ export * from "./validateCreateService";
 export * from "./validateUpdateService";
 export * from "./validateCreateResident";
 export * from "./validateUpdateResident";
+export * from "./validateCreateAppointment";
+export * from "./validateUpdateAppointment";

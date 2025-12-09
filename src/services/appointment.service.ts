@@ -3,7 +3,11 @@ import type { CreateAppointment, UpdateAppointment } from "../types/requests";
 
 export class AppointmentService {
     async getAppointments() {
-        return await prisma.appointment.findMany();
+        return await prisma.appointment.findMany({
+            orderBy: {
+                appointment_datetime: "asc"
+            }
+        });
     }
 
     async getAppointmentById(id: string) {

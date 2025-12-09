@@ -10,7 +10,9 @@ const adapter = new PrismaMariaDb({
   database: process.env.DB_NAME
 })
 
-export const prisma = new PrismaClient({
+const prisma = new PrismaClient({
   log: ["query", "info", "warn", "error"],
   adapter
 });
+
+export {prisma}
