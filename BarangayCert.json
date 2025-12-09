@@ -1,0 +1,569 @@
+{
+  "info": {
+    "name": "BarangayCert",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Auth User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}auth/user",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}auth"
+              ],
+              "path": [
+                "user"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}auth/login",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}auth"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"aldrinaureus\",\n  \"password\": \"password12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}auth/logout",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}auth"
+              ],
+              "path": [
+                "logout"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}auth/register",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}auth"
+              ],
+              "path": [
+                "register"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Aldrin\",\n  \"last_name\": \"Aureus\",\n  \"username\": \"aldrinaureus\",\n  \"email\": \"aldrinaureus.1050@gmail.com\",\n  \"password\": \"password12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Barangay Secretaries",
+      "item": [
+        {
+          "name": "Add Barangay Secretary",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}barangay_secretaries",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}barangay_secretaries"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Remelyn\",\n  \"middle_name\": \"Arco\",\n  \"last_name\": \"Parado\",\n  \"username\": \"remelynparado\",\n  \"email\": \"remelynparado@gmail.com\",\n  \"password\": \"password12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Barangay Secretaries / Get Barangay Secretary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}barangay_secretaries",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}barangay_secretaries"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Remove Barangay Secretary",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}barangay_secretaries",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}barangay_secretaries"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update Barangay Secretary",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}barangay_secretaries/eb60eb4a-75ec-41d7-8eef-3af2094983e9",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}barangay_secretaries"
+              ],
+              "path": [
+                "eb60eb4a-75ec-41d7-8eef-3af2094983e9"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"remelyn\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "Add Barangay Secretary",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}services",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}services"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Barangay Certificate\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Services / Get Services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}services",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}services"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Remove Barangay Secretary",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}services",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}services"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update Barangay Secretary",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}services",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}services"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Residents",
+      "item": [
+        {
+          "name": "Get All Resident / Get Resident",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Remove Resident",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents/3facf4fd-a495-4d7a-a294-01c8974e92d6",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [
+                "3facf4fd-a495-4d7a-a294-01c8974e92d6"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Add Resident",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Darwin\",\n  \"last_name\": \"Rodolfo\",\n  \"birth_date\": \"2005-11-20\",\n  \"address\": \"Tible Sipocot\",\n  \"contact_number\": \"+639832232322\",\n  \"sex\": \"MALE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Resident",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents/3facf4fd-a495-4d7a-a294-01c8974e92d6",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [
+                "3facf4fd-a495-4d7a-a294-01c8974e92d6"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"birth_date\": \"2000-07-22\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Remove Appointment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents/3facf4fd-a495-4d7a-a294-01c8974e92d6",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [
+                "3facf4fd-a495-4d7a-a294-01c8974e92d6"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get All Appointments / Get Appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}appointments",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}appointments"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update Appointment",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}residents/3facf4fd-a495-4d7a-a294-01c8974e92d6",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}residents"
+              ],
+              "path": [
+                "3facf4fd-a495-4d7a-a294-01c8974e92d6"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"birth_date\": \"2000-07-22\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Add Appointment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}appointments",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}appointments"
+              ],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resident_id\": \"3f5838fc-4536-4e9f-8101-577fccc99f3b\",\n  \"service_id\": \"43d3f213-ee44-41f7-9ee3-0cbb98135c92\",\n  \"appointment_datetime\": \"2025-12-09T05:07\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BACKEND_URL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
