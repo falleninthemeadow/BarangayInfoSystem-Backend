@@ -16,7 +16,7 @@ export class AppointmentController {
     }
 
     async getById(req: Request, res: Response) {
-        await service.getAppointmentById(parseInt(req.params.id || "")).then((result) => {
+        await service.getAppointmentById(req.params.id || "").then((result) => {
             res.status(200).json({
                 message: "Successfully retrieved appointment",
                 data: result
@@ -38,7 +38,7 @@ export class AppointmentController {
     }
 
     async update(req: Request, res: Response) {
-        await service.updateAppointment(parseInt(req.params.id || ""), req.body).then((result) => {
+        await service.updateAppointment(req.params.id || "", req.body).then((result) => {
             res.status(200).json({
                 message: "Successfully updated appointment",
                 data: result
@@ -49,7 +49,7 @@ export class AppointmentController {
     }
 
     async delete(req: Request, res: Response) {
-        await service.deleteAppointment(parseInt(req.params.id || "")).then((result) => {
+        await service.deleteAppointment(req.params.id || "").then((result) => {
             res.status(200).json({
                 message: "Successfully deleted appointment",
                 data: result

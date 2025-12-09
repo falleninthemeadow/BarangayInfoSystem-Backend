@@ -34,6 +34,7 @@ model Resident {
   middle_name    String?       @db.VarChar(100)
   last_name      String        @db.VarChar(100)
   address        String        @db.LongText
+  birth_date     DateTime
   contact_number String        @db.VarChar(15)
   sex            Sex
   appointments   Appointment[]

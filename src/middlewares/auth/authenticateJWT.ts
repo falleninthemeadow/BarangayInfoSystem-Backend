@@ -13,6 +13,11 @@ export const authenticateJWT = async (req: Request, res: Response, next: NextFun
 
     const payload = jwtUtil.verify(token);
     if (!payload) {
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax"
+        });
         return res.status(401).json({ message: "Unauthenticated" });
     }
 

@@ -1,11 +1,12 @@
 import { Router } from "express"
 import { BarangaySecretaryController } from "../controllers/barangay-secretary.controller"
-import { validateCreateBarangaySecretary } from "../middlewares/validators"
-import { validateUpdateBarangaySecretary } from "../middlewares/validators/validateUpdateBarangaySecretary"
+import { validateCreateBarangaySecretary, validateUpdateBarangaySecretary  } from "../middlewares/validators"
+import { authenticateJWT } from "../middlewares/auth"
 
 const router = Router()
 const controller = new BarangaySecretaryController()
 
+router.use(authenticateJWT);
 router.get("/", controller.getAll);
 router.get("/:id", controller.getById);
 router.post("/", [validateCreateBarangaySecretary], controller.create);

@@ -5,46 +5,73 @@ const service = new ResidentService();
 
 export class ResidentController {
     async getAll(req: Request, res: Response) {
-        await service.getResidents().then((result) => {
-            res.status(200).json({
+        try {
+            const residents = await service.getResidents()
+            return res.status(200).json({
                 message: "Successfully retrieved residents",
-                data: result
-            });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+                data: residents
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 
     async getById(req: Request, res: Response) {
-        await service.getResidentById(req.params.id || "").then((result) => {
-            res.status(200).json({
+        try {
+            const resident = await service.getResidentById(req.params.id || "")
+
+            if (!resident) {
+                return res.status(404).json({ message: "Not found" });
+            }
+            
+            return res.status(200).json({
                 message: "Successfully retrieved resident",
-                data: result
+                data: resident
             });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 
     async create(req: Request, res: Response) {
-        await service.createResident(req.body).then((result) => {
-            res.status(201).json({
+        try {
+            const resident = await service.createResident({
+                ...req.body,
+                birth_date: new Date(req.body.birth_date)
+            })
+            return res.status(201).json({
                 message: "Successfully created resident",
-                data: result
-            });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+                data: resident
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 
     async update(req: Request, res: Response) {
-        await service.updateResident(req.params.id || "", req.body).then((result) => {
-            res.status(200).json({
+        try {
+            const resident = await service.updateResident(req.params.id || "", {
+                ...req.body,
+                birth_date: new Date(req.body.birth_date)
+            })
+            return res.status(200).json({
                 message: "Successfully updated resident",
-                data: result
-            });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+                data: resident
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    }
+
+    async delete(req: Request, res: Response) {
+        try {
+            await service.deleteResident(req.params.id || "")
+            
+            return res.status(200).json({
+                message: "Successfully deleted resident",
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 }

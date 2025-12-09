@@ -13,6 +13,9 @@ const barangaySecretarySchema = yup.object().shape({
             "username-exists",
             "Username already exists",
             async (username) => {
+                if (!username) {
+                    return true;
+                }
                 const user = await authService.getByUsername(username as string);
                 return !user;
             }
@@ -21,11 +24,14 @@ const barangaySecretarySchema = yup.object().shape({
             "email-exists",
             "Email already exists",
             async (email) => {
+                if (!email) {
+                    return true;
+                }
                 const user = await authService.getByEmail(email as string);
                 return !user;
             }
         ),
-    password: yup.string().required("Password is required")
+    password: yup.string().optional().min(1, "Password is required")
 });
 
 export const validateUpdateBarangaySecretary = async (req: Request, res: Response, next: NextFunction) => {

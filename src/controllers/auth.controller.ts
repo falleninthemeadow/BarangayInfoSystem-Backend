@@ -1,9 +1,9 @@
 import type { Request, Response } from "express";
 import type { CreateBarangaySecretary } from "../types/requests";
 import { AuthService } from "../services/auth.service";
-import bcrypt from "bcryptjs";
 import type { LoginUser } from "../types/requests/Auth";
 import { jwtUtil } from "../utils/jwt";
+import { hashPassword, comparePassword } from "../utils/hash";
 
 const service = new AuthService();
 
@@ -19,7 +19,7 @@ export class AuthController {
             });
         }
 
-        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
+        const passwordMatch = await comparePassword(credentials.password, user.password);
 
         if (!passwordMatch) {
             return res.status(400).json({
@@ -48,8 +48,8 @@ export class AuthController {
     async register(req: Request, res: Response) {
         const body: CreateBarangaySecretary = req.body;
 
-        const salt = await bcrypt.genSalt(10);
-        body.password = await bcrypt.hash(body.password, salt);
+        const hashedPassword = await hashPassword(body.password);
+        body.password = hashedPassword;
 
         const response = service.register(body);
 

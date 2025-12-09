@@ -1,61 +1,84 @@
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import { BarangaySecretaryService } from "../services/barangay-secretary.service";
+
+import { BaseController } from "./base.controller";
+import bcrypt from "bcryptjs";
+import { hashPassword } from "../utils/hash";
 
 const service = new BarangaySecretaryService();
 
-export class BarangaySecretaryController {
+export class BarangaySecretaryController extends BaseController {
     async getAll(req: Request, res: Response) {
-        await service.getAllBarangaySecretaries().then((result) => {
-            res.status(200).json({
-                message: "Successfully fetched barangay secretaries",
-                data: result
+        try {
+            const barangaySecretaries = await service.getAllBarangaySecretaries();
+            return res.status(200).json({
+                message: "Successfully retrieved barangay secretaries",
+                data: barangaySecretaries
             });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+        
     }
 
     async getById(req: Request, res: Response) {
-        await service.getBarangaySecretaryById(req.params.id || "").then((result) => {
-            res.status(200).json({
-                message: "Successfully fetched barangay secretary",
-                data: result
-            });
-        }).catch((error) => {
-            res.status(404).json(error);
-        })
+        try {
+            const barangaySecretary = await service.getBarangaySecretaryById(req.params.id || "")
+            if (!barangaySecretary) {
+                return res.status(404).json({ message: "Not found" });
+            }
+            return res.status(200).json({
+                message: "Successfully retrieved barangay secretary",
+                data: barangaySecretary
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+
     }
 
     async create(req: Request, res: Response) {
-        await service.createBarangaySecretary(req.body).then((result) => {
-            res.status(201).json({
+        try {
+            const password = await hashPassword(req.body.password);
+            const barangaySecretary = await service.createBarangaySecretary({
+                ...req.body,
+                password
+            })
+            return res.status(201).json({
                 message: "Successfully created barangay secretary",
-                data: result
-            });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+                data: barangaySecretary
+            })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+       
     }
 
     async update(req: Request, res: Response) {
-        await service.updateBarangaySecretary(req.params.id || "", req.body).then((result) => {
-            res.status(200).json({
+        try {
+            const updated = await service.updateBarangaySecretary(req.params.id || "", req.body)
+
+            return res.status(200).json({
                 message: "Successfully updated barangay secretary",
-                data: result
+                data: updated
             });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 
     async delete(req: Request, res: Response) {
-        await service.deleteBarangaySecretary(req.params.id || "").then((result) => {
-            res.status(200).json({
+        try {
+            if (req.user.id === req.params.id) {
+                return res.status(400).json({ message: "You cannot delete yourself" });
+            }
+            await service.deleteBarangaySecretary(req.params.id || "")
+
+            return res.status(200).json({
                 message: "Successfully deleted barangay secretary",
-                data: result
             });
-        }).catch((error) => {
-            res.status(500).json(error);
-        })
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 }
