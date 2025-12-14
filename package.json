@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tsc --watch",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "node scripts/post-install.js"
   },
   "devDependencies": {
     "@types/bun": "latest",
